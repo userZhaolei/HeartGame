@@ -187,26 +187,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.tv_red:
                 ColorType = 0;
+                openLeftLayout();
                 addHeartView();
                 break;
             case R.id.tv_yellow:
                 ColorType = 1;
+                openLeftLayout();
                 addHeartView();
                 break;
             case R.id.tv_blue:
                 ColorType = 4;
+                openLeftLayout();
                 addHeartView();
                 break;
             case R.id.tv_black:
                 ColorType = 3;
+                openLeftLayout();
                 addHeartView();
                 break;
             case R.id.tv_green:
                 ColorType = 2;
+                openLeftLayout();
                 addHeartView();
                 break;
             case R.id.tv_randomColor:
                 ColorType = 5;
+                openLeftLayout();
                 addHeartView();
                 break;
         }
