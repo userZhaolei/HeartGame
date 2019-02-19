@@ -10,6 +10,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.Random;
+
 /**
  * create by zhaolei 2019/2/18
  */
@@ -53,9 +55,9 @@ public class Heart extends View {
         canvas.drawColor(Color.TRANSPARENT);//设置背景透明
         canvas.rotate(45, getMeasuredWidth() / 2, getMeasuredHeight() / 2);//旋转45°，使心形变正
 
-        rectfTopLeft.set(2, height / 3 + 2, 2 * width / 3 , height );//心形的左上部绘制位置
-        rectfTopRight.set(width / 3 , 2, width, 2 * height / 3);//心形的右上部绘制位置
-        rectfBottom.set(width / 3, height / 3, width , height );//心形的下部绘制位置
+        rectfTopLeft.set(2, height / 3 + 2, 2 * width / 3, height);//心形的左上部绘制位置
+        rectfTopRight.set(width / 3, 2, width, 2 * height / 3);//心形的右上部绘制位置
+        rectfBottom.set(width / 3, height / 3, width, height);//心形的下部绘制位置
         rectfLeft.set(width / 3, height - 4, width, height);//心形左边描边位置
         rectfRight.set(width - 4, height / 3, width, height);//心形右边描边位置
 
@@ -99,5 +101,41 @@ public class Heart extends View {
         rectfBottom = new RectF();
         rectfLeft = new RectF();
         rectfRight = new RectF();
+    }
+
+
+    /**
+     * 设置随机颜色
+     */
+    public void setHeartRandomColor() {
+        int number = new Random().nextInt(5);
+        if (number == 0) {
+            paint.setColor(Color.RED);
+        } else if (number == 1) {
+            paint.setColor(Color.YELLOW);
+        } else if (number == 2) {
+            paint.setColor(Color.GREEN);
+        } else if (number == 3) {
+            paint.setColor(Color.BLACK);
+        } else if (number == 4) {
+            paint.setColor(Color.BLUE);
+        }
+    }
+
+    /**
+     * 设置指定颜色
+     */
+    public void setHearColor(int colorType) {
+        if (colorType == 0) {
+            paint.setColor(Color.RED);
+        } else if (colorType == 1) {
+            paint.setColor(Color.YELLOW);
+        } else if (colorType == 2) {
+            paint.setColor(Color.GREEN);
+        } else if (colorType == 3) {
+            paint.setColor(Color.BLACK);
+        } else if (colorType == 4) {
+            paint.setColor(Color.BLUE);
+        }
     }
 }

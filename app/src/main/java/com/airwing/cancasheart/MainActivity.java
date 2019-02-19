@@ -2,20 +2,24 @@ package com.airwing.cancasheart;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.ParseException;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Heart heart;
     private int x = 100, y = 100;
@@ -31,12 +35,20 @@ public class MainActivity extends AppCompatActivity {
     private long time2;
     private AlertDialog show;
 
+    private RelativeLayout main_left_drawer_layout;
+    public DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //   heart = findViewById(R.id.heart);
         viewGroup = findViewById(R.id.viewGroup);
+
+        //左边菜单
+        main_left_drawer_layout = (RelativeLayout) findViewById(R.id.main_left_drawer_layout);
+        drawerLayout = (DrawerLayout) findViewById(R.id.main_drawer_layout);
+
         showDialog();
      /*   heart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +71,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addHeartView() {
+        tranX = 0;
+        tranY = 0;
+        time1 = 0;
+        isFrist = true;
+        viewGroup.removeAllViews();
+
         while (tranX < screenWidth) {
             //判断红心是否超出屏幕
             if (tranY > screenHeight) {
@@ -68,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
 
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(100, 100);
             Heart heart = new Heart(MainActivity.this);
+            if (ColorType == 5) {
+                heart.setHeartRandomColor();
+            } else {
+                heart.setHearColor(ColorType);
+            }
             viewGroup.addView(heart, layoutParams);
             heart.setTranslationY(tranY);
             heart.setTranslationX(tranX);
@@ -127,8 +150,6 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                tranX = 0;
-                tranY = 0;
                 addHeartView();
                 show.dismiss();
             }
@@ -159,7 +180,47 @@ public class MainActivity extends AppCompatActivity {
         showTime = builder.show();
     }
 
+    int ColorType = 0;
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_red:
+                ColorType = 0;
+                addHeartView();
+                break;
+            case R.id.tv_yellow:
+                ColorType = 1;
+                addHeartView();
+                break;
+            case R.id.tv_blue:
+                ColorType = 4;
+                addHeartView();
+                break;
+            case R.id.tv_black:
+                ColorType = 3;
+                addHeartView();
+                break;
+            case R.id.tv_green:
+                ColorType = 2;
+                addHeartView();
+                break;
+            case R.id.tv_randomColor:
+                ColorType = 5;
+                addHeartView();
+                break;
+        }
+
+    }
+
+    //左边菜单开关事件
+    public void openLeftLayout() {
+        if (drawerLayout.isDrawerOpen(main_left_drawer_layout)) {
+            drawerLayout.closeDrawer(main_left_drawer_layout);
+        } else {
+            drawerLayout.openDrawer(main_left_drawer_layout);
+        }
+    }
 
   /*  @RequiresApi(api = Build.VERSION_CODES.N)
     public String getNowDeta() {
@@ -169,4 +230,6 @@ public class MainActivity extends AppCompatActivity {
         Log.e("AAAAAAAA", "Date获取当前日期时间" + simpleDateFormat.format(date));
         return simpleDateFormat.format(date);
     }*/
+
+
 }
