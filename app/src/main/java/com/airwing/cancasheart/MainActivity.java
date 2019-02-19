@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         //   heart = findViewById(R.id.heart);
         viewGroup = findViewById(R.id.viewGroup);
-
         //左边菜单
         main_left_drawer_layout = (RelativeLayout) findViewById(R.id.main_left_drawer_layout);
         drawerLayout = (DrawerLayout) findViewById(R.id.main_drawer_layout);

@@ -8,16 +8,7 @@
         android:id="@+id/viewGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
-
-        <!--  <com.airwing.cancasheart.Heart
-              android:id="@+id/heart"
-              android:layout_width="50dp"
-              android:layout_height="50dp"
-              android:layout_alignParentRight="true" />-->
-
-    </RelativeLayout>
-
+        tools:context=".MainActivity"></RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/main_left_drawer_layout"
@@ -37,7 +28,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/tv_seleColor"
             android:layout_marginTop="5dp"
             android:orientation="vertical">
@@ -90,5 +81,14 @@
                 android:background="@drawable/bg_shape"
                 android:onClick="onClick" />
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="联系作者QQ:1275031097" />
+
+
     </RelativeLayout>
+
 </android.support.v4.widget.DrawerLayout>
