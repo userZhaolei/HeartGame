@@ -2,6 +2,7 @@ package com.airwing.cancasheart;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
@@ -15,6 +16,9 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.airwing.cancasheart.view.PageActivity;
+import com.airwing.cancasheart.view.PageView;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -94,7 +98,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             heart.setTranslationY(tranY);
             heart.setTranslationX(tranX);
             tranY += 120;
-
 
             heart.setOnClickListener(new View.OnClickListener() {
                 @RequiresApi(api = Build.VERSION_CODES.N)
@@ -213,6 +216,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ColorType = 5;
                 openLeftLayout();
                 addHeartView();
+                break;
+            case R.id.tv_page:
+                startActivity(new Intent(MainActivity.this, PageActivity.class));
                 break;
         }
 
